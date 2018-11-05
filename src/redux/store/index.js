@@ -2,24 +2,19 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import reducer from "../reducers";
 import { logger } from "redux-logger";
-import { persistStore, autoRehydrate } from "redux-persist";
+import IndexSagas from "./sagas";
 
 
-export default function configureStore() {
+import createSagaMiddleware from 'redux-saga';
+
+const sagaMiddleware = createSagaMiddleware();
+
   
-  const store = createStore(
-    reducer,
-    applyMiddleware(thunk, logger),
-  );
+const store = createStore(
+  reducer,
+  applyMiddleware(sagaMiddleware, logger),
+);  
+sagaMiddleware.run(IndexSagas);
 
-  // const config = {
-  //   storage: localStorage,
-  //   // balcklist: ["error"]
-  // };
+export default store;
 
-  // persistStore(store, config, () => {
-  //   console.log("restored reducers")
-  // });
-  
-  return store;
-}

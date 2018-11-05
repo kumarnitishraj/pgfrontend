@@ -3,8 +3,8 @@ import { Grid, Row,Col} from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import UiCard from '../../components/UiComponent/Pg';
-import Header from '../../components/Header'
-import { getPgs } from '../../redux/actions/pgroom'
+import Header from '../../components/Header';
+import { PG_LIST_REQUEST } from '../../config/Constants';
 
 class Home extends React.Component{
     
@@ -53,20 +53,11 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		getPgs: (params) => {
-			dispatch(getPgs(params))
+			dispatch({
+                type: PG_LIST_REQUEST,
+                params
+            })
         },
-
-        // registerUser: (params) => {
-		// 	dispatch(registerUser(params))
-        // },
-    
-        // checkLogin: (token, auth) => {
-        //     dispatch({
-        //         type:LOGIN_SUCESS,
-        //         data : auth,
-        //         token: token
-        //     })
-        // }
 	}
 }
 

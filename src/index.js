@@ -10,10 +10,10 @@ import registerServiceWorker from './registerServiceWorker';
 import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from 'constants';
 
 
-const store = configureStore();
+// const store = configureStore();
 
 ReactDOM.render(
-<Provider store={store}>
+<Provider store={configureStore}>
     <App />
 </Provider>,  document.getElementById('root'));
 registerServiceWorker();

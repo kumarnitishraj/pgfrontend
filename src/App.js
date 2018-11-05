@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
+import { Modal,Button } from "react-bootstrap";
 
 import Login from './container/Auth/Login';
 import PgHome from './container/Home/Pg'
@@ -11,6 +11,8 @@ import PgForm from './components/Form/PgForm'
 import GuestForm from './components/Form/GuestForm'
 
 import { LOGIN_SUCESS } from './config/Constants'
+
+import lodingImage  from './assets/lod.gif';
 
 class App extends React.Component {
 
@@ -24,8 +26,12 @@ class App extends React.Component {
         const { auth } = this.props;
         return(
             <div>
+                
+                {/* <div className="modal-backdrop">
+                    <img src={lodingImage} className="lodImage" />
+                </div> */}
                 <Router>
-
+                    
                     <div>
                         <Route exact path="/" component={!auth.token?Login:PgHome} />
                         <Route path="/home" component={PgHome} />

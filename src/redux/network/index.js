@@ -10,6 +10,7 @@ export const register = (params) => {
 }
 
 export const getPgLists = (params) => {
+    console.log(params)
     let url = APP_URL.PGROOM+"/"+params.userId
     return Api.get(url,params.token).then(res=>res.data);
 }
@@ -40,6 +41,7 @@ export const addGuest = (params) => {
 }
 
 export const getGuestReletedPg = (params) => {
+    console.log(params)
     let url = APP_URL.GUEST_PG+"/"+params.id
     return Api.get(url,params.token).then(res=>res.data);
 }

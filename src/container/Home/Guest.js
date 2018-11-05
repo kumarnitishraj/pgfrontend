@@ -3,8 +3,8 @@ import { Grid, Row,Col} from 'react-bootstrap'
 import { connect } from 'react-redux'
 
 import Header from '../../components/Header';
-import { getGuest } from '../../redux/actions/guest'
 import UiGuest from '../../components/UiComponent/Guest';
+import { GUEST_LIST_REQUEST } from '../../config/Constants';
 
 class Guest extends React.Component{
     constructor(props){
@@ -51,7 +51,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		getGuest: (params) => {
-			dispatch(getGuest(params))
+			dispatch({type:GUEST_LIST_REQUEST, params})
         },
 	}
 }

@@ -39,7 +39,7 @@ class Api {
     }
 
     static request(route, params, verb, key) {
-
+        // delete params.type;
         const host = BASE_API.URL;
         const url = `${host}${route}`
         const options = {

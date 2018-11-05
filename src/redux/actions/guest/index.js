@@ -1,29 +1,29 @@
+import { call, put, takeLatest } from 'redux-saga/effects';
 import { getGuestReletedPg } from '../../network';
 import {
-    START_NETWORK_CALL,
+    GUEST_LIST_REQUEST,
     NETWORK_ERROR,
     GUEST_LIST_SUCESSS,
 } from '../../../config/Constants';
 
-
-export const getGuest = (params) => {
-
-    return dispatch => {
-        
-        getGuestReletedPg(params)
-            .then((response) => {
-            
-                dispatch({
-                    type : GUEST_LIST_SUCESSS,
-                    data : response.data
-                })
-            })
-            .catch((error) => {
-                dispatch({
-                    type: NETWORK_ERROR,
-                    error: error.data,
-                })
-            })
+function* getGuest(params){
+    try {
+        const response = yield getGuestReletedPg(params.params)
+        yield put({
+            type : GUEST_LIST_SUCESSS,
+            data : response.data
+        })
+    } catch (error) {
+        yield put({
+            type: NETWORK_ERROR,
+            error: error.data,
+        })
     }
 }
 
+function* guestWatcher(){
+    yield takeLatest(GUEST_LIST_REQUEST, getGuest)
+}
+
+
+export default guestWatcher;

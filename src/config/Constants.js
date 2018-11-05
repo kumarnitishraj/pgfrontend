@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080'
+const BASE_URL = 'http://localhost:8000'
 
 export const SERVER_BASE_API = {
     URL                 : BASE_URL+"/api/v1/",
@@ -28,10 +28,14 @@ export const ERROR_MESSAGE              = '@component-action-ERROR_MESSAGE';
 export const CLEAR_DATA                 = '@axios-action-CLEAR_DATA';
 export const LOGIN_SUCESS               = '@axios-action-LOGIN_SUCESS';
 export const REGISTER_SUCESS            = '@axios-action-REGISTER_SUCESS';
+export const LOGIN_REQUEST              = '@axios-action-LOGIN_REQUEST';
+export const REGISTER_REQUEST           = '@axios-action-REGISTER_REQUEST';
 export const PGDETAILS_SUCESS           = '@axios-action-PGDETAILS_SUCESS';
 export const PG_LIST_SUCESS             = '@axios-action-PG_LIST_SUCESS';
+export const PG_LIST_REQUEST            = '@axios-action-PG_LIST_REQUEST';
 export const PG_GUEST_DETAILS_SUCESS    = '@axios-action-PG_GUEST_DETAILS_SUCESS';
 export const GUEST_LIST_SUCESSS         = '@axios-action-GUEST_LIST_SUCESSS';
+export const GUEST_LIST_REQUEST         = '@axios-action-GUEST_LIST_REQUEST';
 
 
 

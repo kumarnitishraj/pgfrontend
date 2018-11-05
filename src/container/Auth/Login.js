@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Grid, Row,Col, Alert} from 'react-bootstrap'
 import { Redirect } from "react-router-dom";
+import { login } from "../../redux/network";
 
 import { loginUser, registerUser } from '../../redux/actions/auth'
 
-import { LOGIN_SUCESS } from '../../config/Constants'
+import { LOGIN_SUCESS, LOGIN_REQUEST, REGISTER_REQUEST } from '../../config/Constants'
 
 class App extends Component {
 
@@ -19,7 +20,7 @@ class App extends Component {
 
 
   login=(e)=>{
-
+    console.log('cleinksdhfkjsdhfkhs', this.props)
     e.preventDefault()
     const { loginUser } = this.props;
 
@@ -78,9 +79,9 @@ class App extends Component {
           : null}
 
           <h3>Login Here </h3>
-          <input type="email"      name="username" required placeholder="Enter Your Email"/>
+          <input type="email"  value="abc@ca.com"    name="username" required placeholder="Enter Your Email"/>
             <br/>
-          <input type="password"  name="password" required placeholder="Enter Your Password"/>
+          <input type="password" value="interOP@123" name="password" required placeholder="Enter Your Password"/>
             <br/>
           <input type="submit" />
         </form>
@@ -135,12 +136,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		loginUser: (params) => {
-			dispatch(loginUser(params))
+		loginUser:(params)=>{
+      dispatch({type:LOGIN_REQUEST, params})
     },
-
-    registerUser: (params) => {
-			dispatch(registerUser(params))
+    registerUser: (params)=>{
+      dispatch({type:REGISTER_REQUEST,params})
     },
     
     checkLogin: (token, auth) => {
